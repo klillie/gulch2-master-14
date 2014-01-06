@@ -1,0 +1,26 @@
+<title>Get Usage</title>
+<h1>Get Usage</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%#= form_for(@usage_fetcher) do |f| %>
+    <%= form_for(@usage_fetcher, url: { action: "create" }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+            
+            <div class="left">
+                  <%= f.label :account_no, "Account #:" %>
+                  <%= f.text_field :account_no %>
+            </div>
+
+            <div class="right">
+                  <%= f.label :zip_code, "Zip Code:" %>
+                  <%= f.text_field :zip_code %>
+            </div>
+
+      <%= f.submit "Submit All", class: "btn btn-med btn-custom" %>
+    <% end %>
+
+  </div>
+</div>

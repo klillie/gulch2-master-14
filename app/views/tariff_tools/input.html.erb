@@ -1,0 +1,55 @@
+<title>Inputs</title>
+
+<h1>Input Site & Load Data</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+
+	<div class="span6 offset3">
+
+		<%=form_for(@site, url: '/input/save', html: {method: :post } ) do |f| %>
+<%#=form_for(@site, url: compile_documents_path(@site), format: :csv, html: { method: :post}) do |f|%>
+
+		<%#=form_for(@site, url: '/input/save' ) do |f| %>
+		    <%= render 'shared/error_messages', object: f.object %>
+
+			<br> <!-- enters a blank line, ie: line break -->
+			<%= f.label :zip_code %>
+			<%= f.text_field :zip_code, {:value => '07004' }%>
+
+			<br> <!-- enters a blank line, ie: line break -->
+			<%= f.label :phases %>
+			<%= f.select :phases, ['3-phase','1-phase'] %>
+
+
+			<%# This is a hack to deal with initially invalid input for the @site_load_profile object %>
+			<% if @site_load_profile.nil? %>
+				<% @site_load_profile = SiteLoadProfile.new %>
+			<% end %>
+
+			<%=fields_for @site_load_profile do |g| %>
+				<%= render 'shared/error_messages', object: g.object %>
+
+                <%= g.hidden_field :data_source, value: 'Monthly' %>            	
+                <%#= g.hidden_field :site_id, value: f.id %>
+
+				<br> <!-- enters a blank line, ie: line break -->
+				<%= g.label :all_usage, "All Usage (in kWh)" %>
+				<%= g.text_field :all_usage, {:value => '10000' } %>
+
+				<br> <!-- enters a blank line, ie: line break -->
+				<%= g.label :all_demand, "All Demand (in kW)" %>
+				<%= g.text_field :all_demand, {:value => '100' } %>
+				
+				<br> <!-- enters a blank line, ie: line break -->
+				<%= g.label :meter_read_date, "Meter Read Date (yyyy-mm-dd)" %>
+				<%= g.text_field :meter_read_date, {:value => '2013-10-01' } %>
+
+			<% end %>
+
+			<br> <!-- enters a blank line, ie: line break -->
+			<%= f.submit "Submit", class: "btn btn-med btn-custom" %>
+		<% end %>
+	</div>
+</div>

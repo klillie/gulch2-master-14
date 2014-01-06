@@ -1,0 +1,27 @@
+<title>Sign In</title>
+<h1>Sign In</h1>
+<h3>Please create an account to continue </h3>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+     
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <br>
+      <%= f.submit "Sign in", class: "btn btn-medu btn-custom" %>
+      <br>
+      <%= link_to "Reset Password", new_password_reset_path %>
+    <% end %>
+    
+    <h6>
+    New user? <%= link_to "Sign up now!", signup_path %> 
+    </h6>
+      
+  </div>
+</div>

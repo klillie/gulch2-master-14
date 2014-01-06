@@ -1,0 +1,29 @@
+<h1>Input Zip Code in the New Sessions View!</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		
+		<%=form_for(:session, url: sessions_path) do |f| %>
+
+			
+			<%= f.label :zip_code %>
+			<%= f.text_field :zip_code, {:value => '07004'} %>
+
+			<%= f.label :demand_in_kW %>
+			<%= f.text_field :demand_in_kW, {:value => '100'} %>
+
+		
+			<%= f.label :usage_in_kWh %>
+			<%= f.text_field :usage_in_kWh, {:value => '10000'} %>
+
+		
+			<%= f.label :bill_date %>
+			<%= f.text_field :bill_date, {:value => '10/1/2013'} %>
+
+			<%= f.label :phases %>
+			<%= f.text_field :phases, {:value => '3-phase'} %>
+
+			<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

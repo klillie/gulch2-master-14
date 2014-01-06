@@ -1,0 +1,13 @@
+A User has submitted data to the Tariff Tool which has resulted in an error.  Here is the data that was submitted:
+
+Site id:		<%= @site.id %>
+Zip Code:		<%= @site.zip_code %>
+Phases:			<%= @site.phases %>
+
+Demand:			<%= @site_load_profile.all_demand %>
+Usage:			<%= @site_load_profile.all_usage %>
+Meter Read Date:<%= @site_load_profile.meter_read_date %>
+
+By User (id):	<%= @site.user_id %>
+
+The source of this error must be determined and corrected.  Chances are that some data is missing from the database, or has been input incorrectly.

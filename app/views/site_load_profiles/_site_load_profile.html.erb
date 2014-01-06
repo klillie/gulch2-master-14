@@ -1,0 +1,16 @@
+<tr>
+  <td><%= site_load_profile.meter_read_date %></td>
+  <!-- <td><%#= site_load_profile.data_source %></td> -->
+  <td><%= site_load_profile.all_usage %></td>
+  <td><%= site_load_profile.on_peak_usage %></td>
+  <td><%= site_load_profile.part_peak_usage %></td>
+  <td><%= site_load_profile.off_peak_usage %></td>
+  <td><%= site_load_profile.all_demand %></td>
+  <td><%= site_load_profile.on_peak_demand %></td>
+  <td><%= site_load_profile.part_peak_demand %></td>
+  <td><%= site_load_profile.off_peak_demand %></td>
+  <!--<td><%#= link_to "Edit", 	edit_user_path(@user) %></td>-->
+	<!--<td><%#= link_to "Select", 	edit_user_path(@user) %></td>-->
+	<td><%= button_to "Delete", method: "delete", id: site_load_profile.id, 
+                              site_id: site_load_profile.site_id %></td>
+</tr>

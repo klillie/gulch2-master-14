@@ -1,0 +1,26 @@
+
+<h1>Sites: </h1>
+
+<p id="notice"><%= notice %></p>
+
+<% if current_user.sites.count(:is_site_saved) > 0 %>
+      <table>
+            <tr>
+                  <td>Site Selected?</td>
+                  <td>Site Name:</td>
+                  <td>Company:</td>
+                  <td>City:</td>
+                  <td>State:</td>
+                  <td>Description:</td>
+            </tr>
+            <ol class="sites">
+                  <%= render current_user.sites %>
+            </ol>
+            <%#= will_paginate @sites %>
+      </table>
+<% else %>
+<p> No sites saved </p>
+<% end %>
+
+<%= link_to "Create New Site", new_site_path %>
+

@@ -1,0 +1,172 @@
+
+<title>Site Details and Load Profile</title>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Site Details:</h1>
+
+<table>
+      <tr>
+            <td> Site Name: </td>
+            <td><%= @site.site_name %></td>
+
+            <td></td>
+            <td></td>
+
+            <td> Address: </td>
+            <td><%= @site.address %></td>
+      </tr>
+      <tr>
+            <td> Company: </td>
+            <td><%= @site.company %></td>
+
+            <td></td>
+            <td></td>
+
+            <td> City: </td>
+            <td><%= @site.city %></td>
+      </tr>
+      <tr>
+            <td> Industry Type: </td>
+            <td><%= @site.industry_type %></td>
+
+            <td></td>
+            <td></td>
+
+            <td> State: </td>
+            <td><%= @site.state %></td>
+      </tr>
+      <tr>
+            <td> Building Type: </td>
+            <td><%= @site.building_type %></td>
+
+            <td></td>
+            <td></td>
+
+            <td> Zip: </td>
+            <td><%= @site.zip_code %></td>
+      </tr>
+      <tr>
+            <td> Phases: </td>
+            <td><%= @site.phases %></td>
+
+            <td></td>
+            <td></td>
+
+            <td> Square Feet: </td>
+            <td><%= @site.square_feet %></td>
+      </tr>
+      <tr>
+            <td> Description: </td>
+            <td><%= @site.description %></td>
+      </tr>
+
+      <tr>
+            <td> Is Site currently selected? </td>
+            <td>
+                  <% if @site.id == session[:selected_site_id] %>
+                        <td>Yes</td>
+                  <% else %>
+                        <td></td>
+                  <% end %>
+            </td>
+
+            <td>
+                  <%#= button_to "Select", action: "select_site", site_id: @site.id %>
+            </td>
+
+      </tr>
+</table>
+
+<%= link_to "Edit Site Info", edit_site_path(@site) %>      
+
+
+<h1>Site Load Profile: </h1>
+
+
+<% if @site.site_load_profiles.any? %>
+      <table>
+            <tr>
+                  <td>Meter Read Date:</td>
+                  <!-- <td>Data Source:</td> -->
+                  <td>All Usage (kWh):</td>
+                  <td>On-Peak Usage (kWh):</td>
+                  <td>Part-Peak Usage (kWh):</td>
+                  <td>Off-Peak Usage (kWh):</td>
+                  <td>All Demand (kW):</td>
+                  <td>On-Peak Demand (kW):</td>
+                  <td>Part-Peak Demand (kW):</td>
+                  <td>Off-Peak Demand (kW):</td>
+            </tr>
+            
+            <ol class="sites">
+                  <%= render @site.site_load_profiles %>
+            </ol>
+            
+      </table>
+<% else %>
+<p> No load profile saved </p>
+<% end %>
+
+
+<h1>Change Site Load Profile:</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@site_load_profile, url: { action: "create" }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+            
+            <div>
+                  <%= f.hidden_field :site_id, value: @site.id %>
+                  <%= f.hidden_field :data_source, value: 'Monthly' %>
+            </div>
+
+            <div class="center">
+                  <%= f.label :meter_read_date %>
+                  <%= f.date_field :meter_read_date %>
+            </div>
+
+            <div class="left">
+                  <%= f.label :all_usage, "All Usage (in kWh)" %>
+                  <%= f.text_field :all_usage %>
+            </div>
+
+            <div class="right">
+                  <%= f.label :all_demand, "All Demand (in kW)" %>
+                  <%= f.text_field :all_demand %>
+            </div>
+
+            <div class="left">
+                  <%= f.label :on_peak_usage, "On-Peak Usage (in kWh)" %>
+                  <%= f.text_field :on_peak_usage %>
+            </div>
+
+            <div class="right">
+                  <%= f.label :on_peak_demand, "On-Peak Demand (in kW)" %>
+                  <%= f.text_field :on_peak_demand %>
+            </div>
+
+            <div class="left">
+                  <%= f.label :part_peak_usage, "Part-Peak Usage (in kWh)" %>
+                  <%= f.text_field :part_peak_usage %>
+            </div>
+
+            <div class="right">
+                  <%= f.label :part_peak_demand, "Part-Peak Demand (in kW)" %>
+                  <%= f.text_field :part_peak_demand %>
+            </div>
+
+            <div class="left">
+                  <%= f.label :off_peak_usage, "Off-Peak Usage (in kWh)" %>
+                  <%= f.text_field :off_peak_usage %>
+            </div>
+
+            <div class="right">
+                  <%= f.label :off_peak_demand, "Off-Peak Demand (in kW)" %>
+                  <%= f.text_field :off_peak_demand %>
+            </div>
+                  
+      <%= f.submit "Change Load Profile", class: "btn btn-med btn-custom" %>
+    <% end %>
+
+  </div>
+</div>

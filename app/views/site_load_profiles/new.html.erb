@@ -1,0 +1,60 @@
+<title>Add to Load Profile</title>
+<h1>Add to Load Profile</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@site_load_profile) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+		
+      	<div>
+      		<%= f.hidden_field :site_id, value: 266 %>
+      	</div>
+
+  	   	<div class="left">
+  	      	<%= f.label :meter_read_date %>
+  	      	<%= f.date_field :meter_read_date %>
+  	  	</div>
+
+    		<div class="right">
+      		<%= f.label :tou, "Time of User" %>
+      		<%= f.select :tou, ['All', 'Peak', 'Part-Peak', 'Off-Peak'] %>
+      	</div>
+
+  	  	<div class="left">
+        		<%= f.label :demand, "Demand (in kW)" %>
+        		<%= f.text_field :demand %>
+    		</div>
+
+       	<div class="right">
+        		<%= f.label :usage, "Usage (in kWh)" %>
+        		<%= f.text_field :usage %>
+    		</div>
+     			
+      <%= f.submit "Save", class: "btn btn-med btn-custom" %>
+    <% end %>
+
+  </div>
+</div>
+
+<h1>Site Load Profile: </h1>
+<%# if @site.site_load_profiles.any? %>
+  <table>
+    <tr>
+      <td>Meter Read Date:</td>
+      <td>Total Usage (kWh):</td>
+      <td>On-Peak Usage (kWh):</td>
+      <td>Part-Peak Usage (kWh):</td>
+      <td>Off-Peak Usage (kWh):</td>
+      <td>Billing Demand (kW):</td>
+      <td>On-Peak Demand (kW):</td>
+      <td>Part-Peak Demand (kW):</td>
+      <td>Off-Peak Demand (kW):</td>
+    </tr>
+    <ol class="site_load_profiles">
+      <%#= render @site_load_profiles %>
+    </ol>
+      <%#= will_paginate @sites %>
+  </table>
+<%# else %>
+  <p> No load profile saved </p>
+<%# end %>

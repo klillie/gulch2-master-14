@@ -1,0 +1,66 @@
+<title>Sign Up</title>
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+<div class="left">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+      <!-- <br> --> <!-- enters a blank line, ie: line break -->
+    </div>
+
+<div class="right">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+      <!-- <br>  --><!-- enters a blank line, ie: line break --></div>
+
+<div class="left">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+      <!-- <br> --> <!-- enters a blank line, ie: line break --> </div>
+<div class="right">
+      <%= f.label :phone %>
+      <%= f.telephone_field :phone %>
+      <!-- <br>  --><!-- enters a blank line, ie: line break --></div>
+<div class="left">
+      <%= f.label :company %>
+      <%= f.text_field :company %>
+      <!-- <br> --> <!-- enters a blank line, ie: line break --></div>
+
+<div class="right">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+      <!-- <br>  --><!-- enters a blank line, ie: line break --></div>
+
+<div class="left">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+      <!-- <br> --> <!-- enters a blank line, ie: line break --></div>
+<div class="right">
+      <%= f.label :state %>
+      <%= f.text_field :state %>
+     <!--  <br> --> <!-- enters a blank line, ie: line break -->
+</div>
+
+<div class="left">      
+      <%= f.label :zip %>
+      <%= f.text_field :zip %>
+    <!--   <br> --> <!-- enters a blank line, ie: line break --></div>
+    <br>
+<div class="left">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+     <!--  <br> --> <!-- enters a blank line, ie: line break --></div>
+<div class="right">
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+     <br> <!-- enters a blank line, ie: line break -->
+
+      <%= f.submit "Create my account", class: "btn btn-med btn-custom" %>
+    <% end %>
+
+  </div>
+</div>

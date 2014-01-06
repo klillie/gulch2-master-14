@@ -1,0 +1,62 @@
+<title>User Profile</title>
+<h1>View your profile</h1>
+
+<p id="notice"><%= notice %></p>
+
+<table> 
+      <tr>
+            <td> First Name: </td>
+            <td><%= @user.first_name %></td>
+
+            <td></td>
+
+            <td> Company: </td>
+            <td><%= @user.company %></td>
+
+      </tr>
+      <tr>
+            <td> Last Name: </td>
+            <td><%= @user.last_name %></td>
+
+            <td></td>
+            
+            <td> Address: </td>
+            <td><%= @user.address %></td>
+            
+      </tr>
+      <tr>
+            <td> Email: </td>
+            <td><%= @user.email %></td>
+
+            <td></td>
+
+            <td> City: </td>
+            <td><%= @user.city %></td>
+      </tr>
+      <tr>
+            <td> Phone </td>
+            <td><%= @user.phone %></td>
+
+            <td></td>
+
+            <td> State: </td>
+            <td><%= @user.state %></td>
+      </tr>
+      <tr>
+            <td></td>
+            <td></td>
+
+            <td></td>
+
+            <td> Zip: </td>
+            <td><%= @user.zip %></td>
+      </tr>
+      
+</table>
+
+<%= link_to "Edit Profile Info", edit_user_path(@user) %>   
+
+<br> <!-- enters a blank line, ie: line break -->
+<br> <!-- enters a blank line, ie: line break -->
+<br> <!-- enters a blank line, ie: line break -->
+<br> <!-- enters a blank line, ie: line break -->
